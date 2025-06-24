@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 export default function Header() {
-  const [login, setLogin] = useState(false);
   return (
     <div>
       <ul className="nav-items">
@@ -17,13 +16,6 @@ export default function Header() {
         </li>
         <li>Cart</li>
       </ul>
-      <div>
-        {login ? (
-          <button onClick={() => setLogin(false)}>Logout</button>
-        ) : (
-          <button onClick={() => setLogin(true)}>Login</button>
-        )}
-      </div>
     </div>
   );
 }
