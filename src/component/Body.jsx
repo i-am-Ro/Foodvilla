@@ -4,6 +4,7 @@ import { ResturantList } from "./Config";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 function filterData(searchInput, allResturants) {
   return allResturants.filter((resturant) =>
@@ -25,10 +26,16 @@ export default function Body() {
       "https://685265a50594059b23cd54b2.mockapi.io/FoodVilla"
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     setAllResturants(json);
     setFiteredResturants(json);
   }
+
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false)
+    return (
+      <h1>Looks like you are offline! Please check your internet connection</h1>
+    );
 
   return allResturants.length === 0 ? (
     <Shimmer />
