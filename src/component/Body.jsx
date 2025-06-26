@@ -41,26 +41,29 @@ export default function Body() {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Enter food to search"
-          className="search-input"
-          value={searchInput}
-          onChange={(e) => {
-            setSearchInput(e.target.value);
-          }}
-        ></input>
-        <button
-          className="Search-btn"
-          onClick={() => {
-            const data = filterData(searchInput, allResturants);
-            setFiteredResturants(data);
-          }}
-        >
-          Search
-        </button>
+      <div className="flex justify-center mt-6 mb-10">
+        <div className="flex items-center gap-3">
+          <input
+            type="text"
+            placeholder="Enter food to search"
+            className="px-4 py-2 border border-red-300 focus:outline-none focus:ring-2 focus:ring-red-400 rounded-md shadow-sm text-sm w-64"
+            value={searchInput}
+            onChange={(e) => {
+              setSearchInput(e.target.value);
+            }}
+          />
+          <button
+            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md shadow-md transition duration-200"
+            onClick={() => {
+              const data = filterData(searchInput, allResturants);
+              setFiteredResturants(data);
+            }}
+          >
+            Search
+          </button>
+        </div>
       </div>
+
       <div className="cards">
         {filteredresturants.length === 0 ? (
           <h2 className="not-found-text">No restaurants found 🍽️</h2>
