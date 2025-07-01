@@ -1,5 +1,3 @@
-import "./Contact.css";
-
 const Contact = () => {
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md text-gray-800">
