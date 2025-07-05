@@ -5,17 +5,24 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { FaFilter } from "react-icons/fa";
 
 function filterData(searchInput, allResturants) {
   return allResturants.filter((resturant) =>
     resturant.name.toLowerCase().includes(searchInput.toLowerCase())
   );
 }
+const sortByPriceLowToHigh = (data) =>
+  [...data].sort((a, b) => a.price - b.price);
+
+const sortByPriceHighToLow = (data) =>
+  [...data].sort((a, b) => b.price - a.price);
 
 export default function Body() {
   const [allResturants, setAllResturants] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [filteredresturants, setFiteredResturants] = useState([]);
+  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
     getResturants();
@@ -61,6 +68,72 @@ export default function Body() {
           >
             Search
           </button>
+
+          <div className="relative inline-block text-left">
+            <button
+              className="flex items-center gap-2 bg-white border border-gray-300 hover:bg-gray-100 text-gray-800 px-4 py-2 rounded-md shadow-sm transition duration-200"
+              onClick={() => setShowFilter(!showFilter)}
+            >
+              <FaFilter />
+              Filter
+            </button>
+
+            {showFilter && (
+              <div className="absolute right-0 top-full mt-2 z-10 w-60 bg-white border border-gray-200 rounded-lg shadow-md p-4 space-y-3 text-sm">
+                <form
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value === "lowToHigh") {
+                      setFiteredResturants(
+                        sortByPriceLowToHigh(filteredresturants)
+                      );
+                    } else if (value === "highToLow") {
+                      setFiteredResturants(
+                        sortByPriceHighToLow(filteredresturants)
+                      );
+                    }
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      id="lowToHigh"
+                      name="sort"
+                      value="lowToHigh"
+                      className="accent-red-500"
+                    />
+                    <label htmlFor="lowToHigh" className="font-bold">
+                      Price: Low to High
+                    </label>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="radio"
+                      id="highToLow"
+                      name="sort"
+                      value="highToLow"
+                      className="accent-red-500"
+                    />
+                    <label htmlFor="highToLow" className="font-bold">
+                      Price: High to Low
+                    </label>
+                  </div>
+                </form>
+
+                <button
+                  onClick={() => {
+                    setSearchInput("");
+                    setFiteredResturants(allResturants);
+                    setShowFilter(false);
+                  }}
+                  className="w-full text-left px-2 py-1 hover:bg-red-100 text-red-500 rounded font-bold"
+                >
+                  Reset Filters
+                </button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
