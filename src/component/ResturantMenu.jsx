@@ -5,6 +5,8 @@ import { ResturantList } from "./Config";
 import ResturantCatagory from "./ResturantCatagory";
 import { FaAngleDown } from "react-icons/fa";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addItem, removeItem } from "../utils/cartSlice";
 
 const ResturantMenu = () => {
   const { id } = useParams();
@@ -13,7 +15,15 @@ const ResturantMenu = () => {
   function handleClick() {
     setShowItems(!showItems);
   }
+  const dispatch = useDispatch();
 
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
+
+  const handleRemoveItem = (item) => {
+    dispatch(removeItem(item));
+  };
   return resInfo === null ? (
     <Shimmer />
   ) : (
@@ -33,7 +43,37 @@ const ResturantMenu = () => {
         <h4 className="text-sm text-gray-600 mb-1">
           {resInfo.lastMileTravelString}
         </h4>
-        <h4 className="text-sm font-medium text-red-600">${resInfo.price}</h4>
+        <h4 className="text-sm font-medium text-red-600">₹{resInfo.price}</h4>
+        <div className="flex gap-3 mt-2">
+          <button
+            onClick={() =>
+              handleAddItem({
+                name: resInfo.name,
+                cuisines: resInfo.cuisines,
+                lastMileTravelString: resInfo.lastMileTravelString,
+                cloudinaryImageId: resInfo.cloudinaryImageId,
+                price: resInfo.price,
+              })
+            }
+            className="bg-green-500 hover:bg-green-600 text-white px-3 py-1 rounded text-sm"
+          >
+            Add
+          </button>
+          <button
+            onClick={() =>
+              handleRemoveItem({
+                name: resInfo.name,
+                cuisines: resInfo.cuisines,
+                lastMileTravelString: resInfo.lastMileTravelString,
+                cloudinaryImageId: resInfo.cloudinaryImageId,
+                price: resInfo.price,
+              })
+            }
+            className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm"
+          >
+            Remove
+          </button>
+        </div>
       </div>
 
       <div className="bg-gray-50 rounded-xl shadow-sm p-6">
