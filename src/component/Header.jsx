@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const onlineStatus = useOnlineStatus();
-
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
   return (
     <header className="w-full bg-white border-b border-red-300 ">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo & Brand */}
         <div className="flex items-center space-x-3">
           <img
             src="https://files.yappe.in/place/full/food-villa-family-restaurant-hotel-4642683.webp"
@@ -54,9 +55,11 @@ export default function Header() {
               </Link>
             </li>
             <li>
-              <span className="hover:text-blue-600 transition-colors duration-200 cursor-pointer">
-                Cart
-              </span>
+              <Link to="/cart">
+                <span className="hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                  Cart({cartItems.length}items)
+                </span>
+              </Link>
             </li>
           </ul>
         </nav>

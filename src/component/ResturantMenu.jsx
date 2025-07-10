@@ -53,7 +53,10 @@ const ResturantMenu = () => {
         {showItems && (
           <div className="space-y-4">
             {ResturantList.map((resturant) => (
-              <ResturantCatagory {...resturant.data} key={resturant.data.id} />
+              <ResturantCatagory
+                {...resturant?.data}
+                key={resturant?.data?.id}
+              />
             ))}
           </div>
         )}
