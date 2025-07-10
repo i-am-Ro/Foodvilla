@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
+import { FaCartPlus } from "react-icons/fa";
 
 export default function Header() {
   const onlineStatus = useOnlineStatus();
@@ -56,8 +57,11 @@ export default function Header() {
             </li>
             <li>
               <Link to="/cart">
-                <span className="hover:text-blue-600 transition-colors duration-200 cursor-pointer">
-                  Cart({cartItems.length}items)
+                <span className="relative cursor-pointer text-gray-800 hover:text-blue-600 transition-colors duration-200">
+                  <FaCartPlus className="text-2xl" />
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-semibold rounded-full px-1.5 py-0.5">
+                    {cartItems.length}
+                  </span>
                 </span>
               </Link>
             </li>
