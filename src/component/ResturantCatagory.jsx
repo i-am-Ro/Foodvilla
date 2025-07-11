@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
+import useProtectedAddToCart from "../utils/useProtectedAddToCart";
 
 const ResturantCatagory = ({
   name,
@@ -12,10 +13,10 @@ const ResturantCatagory = ({
 }) => {
   const dispatch = useDispatch();
 
-  const handleAddItem = (item) => {
-    dispatch(addItem(item));
-  };
-
+  // const handleAddItem = (item) => {
+  //   dispatch(addItem(item));
+  // };
+  const handleAddItem = useProtectedAddToCart();
   const handleRemoveItem = (item) => {
     dispatch(removeItem(item));
   };

@@ -1,5 +1,4 @@
-export const IMG_CDN_URL =
-  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_500,h_320,c_fill/";
+export const API_URL = "https://685265a50594059b23cd54b2.mockapi.io/FoodVilla";
 
 export const ResturantList = [
   {

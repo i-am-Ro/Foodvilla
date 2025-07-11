@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { FaFilter } from "react-icons/fa";
+import { API_URL } from "./Config";
 
 function filterData(searchInput, allResturants) {
   return allResturants.filter((resturant) =>
@@ -29,9 +30,7 @@ export default function Body() {
   }, []);
 
   async function getResturants() {
-    const data = await fetch(
-      "https://685265a50594059b23cd54b2.mockapi.io/FoodVilla"
-    );
+    const data = await fetch(API_URL);
     const json = await data.json();
     // console.log(json);
     setAllResturants(json);

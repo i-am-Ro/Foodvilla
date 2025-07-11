@@ -7,6 +7,7 @@ import { FaAngleDown } from "react-icons/fa";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem, removeItem } from "../utils/cartSlice";
+import useProtectedAddToCart from "../utils/useProtectedAddToCart";
 
 const ResturantMenu = () => {
   const { id } = useParams();
@@ -17,10 +18,10 @@ const ResturantMenu = () => {
   }
   const dispatch = useDispatch();
 
-  const handleAddItem = (item) => {
-    dispatch(addItem(item));
-  };
-
+  // const handleAddItem = (item) => {
+  //   dispatch(addItem(item));
+  // };
+  const handleAddItem = useProtectedAddToCart();
   const handleRemoveItem = (item) => {
     dispatch(removeItem(item));
   };

@@ -1,5 +1,4 @@
 // import "./ResturantCard.css";
-import { IMG_CDN_URL } from "./Config";
 
 export default function ResturantCard({
   name,
