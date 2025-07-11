@@ -20,9 +20,6 @@ export default function useProtectedAddToCart() {
     }
 
     dispatch(addItem(item));
-    toast.success("Item added to cart!", {
-      position: "bottom-center",
-    });
   };
 
   return handleAddToCart;
