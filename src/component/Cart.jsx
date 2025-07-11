@@ -101,7 +101,11 @@ const Cart = () => {
             </div>
             <button
               className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white py-2 rounded-md font-semibold transition"
-              onClick={() => alert("You have successfully ordered")}
+              // onClick={() => alert("You have successfully ordered")}
+              onClick={() => {
+                alert("You have successfully ordered");
+                dispatch(clearCart());
+              }}
             >
               Checkout
             </button>
