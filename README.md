@@ -1,12 +1,19 @@
-# React + Vite
+🍽️ Food Villa
+Food Villa is a food ordering web application built with React, Firebase Authentication, Firestore, and Redux. Users can browse restaurants, add items to their cart, and place orders. Login/registration is required for cart operations.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Features
+✅ Firebase Authentication (Login & Register)
 
-Currently, two official plugins are available:
+✅ User name display with logout option
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Protected "Add to Cart" functionality (only for logged-in users)
 
-## Expanding the ESLint configuration
+✅ Toast notifications for actions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✅ Dynamic restaurant menu with categories
+
+✅ Redux-based cart management
+
+✅ Responsive and modern UI using Tailwind CSS
+
+✅ Order checkout with cart clearing and success alert
