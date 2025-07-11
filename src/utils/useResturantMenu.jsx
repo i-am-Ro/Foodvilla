@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "../component/Config";
 
 const useResturantMenu = (id) => {
   const [resInfo, setResInfo] = useState(null);
@@ -7,9 +8,7 @@ const useResturantMenu = (id) => {
   }, []);
 
   const fetchMenu = async () => {
-    const data = await fetch(
-      "https://685265a50594059b23cd54b2.mockapi.io/FoodVilla"
-    );
+    const data = await fetch(API_URL);
     const json = await data.json();
 
     const restaurant = json.find((res) => res.id === id);
