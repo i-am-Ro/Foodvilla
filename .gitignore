@@ -23,6 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-src/component/Config.js
-src/component/firebase.js
+
 
